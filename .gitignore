@@ -1,0 +1,8 @@
+data/
+tc_models/
+1_Creating_training_set_LAMOSTxAPOGEE.ipynb
+.ipynb_checkpoints/
+**pycache**/
+*.pyc
+.DS_Store
+

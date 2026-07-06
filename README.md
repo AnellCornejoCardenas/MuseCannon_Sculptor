@@ -1,0 +1,63 @@
+# The Cannon for MUSE Sculptor abundances
+
+This repository contains the notebooks and utilities used to train and apply **The Cannon** to low-resolution MUSE spectra in order to estimate stellar labels and chemical abundances for stars in the Sculptor dwarf spheroidal galaxy (Cornejo-Cardenas et al. in prep.).
+
+## Repository structure
+
+* `2_Training_The_Cannon.ipynb`
+  Training of four different Cannon models:
+
+  * full-spectrum model
+  * absorption-line model
+  * telluric model
+  * combined model
+
+* `3_Predicting_Sculptor_abundances.ipynb`
+  Application of the trained models to MUSE Sculptor spectra
+
+* `functions.py`
+  Auxiliary functions used across notebooks
+
+## Current status
+
+The notebook for preparing the training set (`1_Preparing_training_set.ipynb`) is still under development and is not yet included in the repository.
+
+At this stage, users need to download the processed training data externally before running the notebooks.
+
+## Required data
+
+The data products used in this repository are currently being organized for public release.
+
+At this stage, they are not yet available through a public repository.
+
+For access to the current files, please contact the author (anell.cornejocardenas@anu.edu.au).
+
+A public Zenodo archive will be added in a future release.
+
+## Environment
+
+Recommended Python version:
+
+* Python 3.12
+
+Main dependencies:
+
+* numpy
+* pandas
+* matplotlib
+* scipy
+* pathlib
+* astropy
+* The Cannon (Version 0.2.93)
+
+## Paper draft
+This repository includes the current draft of the manuscript associated with this project. The paper is currently under review at MNRAS.
+
+## Authors
+
+Anell Cornejo
+PhD student in Astrophysics
+Australian National University
+
+Sven Buder, Melissa Ness, Trevor Mendel
+Australian National University

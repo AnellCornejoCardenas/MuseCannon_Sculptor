@@ -413,3 +413,53 @@ def restframe_and_interpolate_sculptor(
     return np.array(final_flux), np.array(final_sigma)
 
 
+
+def download_and_unzip(obsid,folder_path="data/LAMOST_spectra/"):
+    '''
+    Function to download and unzip the spectra given the LAMOST ID.
+    Inputs:
+        obsid: string with the name of the spectrum file
+        folder_path: string with the path to the folder where the spectra will be saved
+    Returns: None
+    '''
+    import requests
+    import gzip
+    import shutil
+    from pathlib import Path
+
+    base_url = "http://www.lamost.org:80/dr9/v2.0/spectrum/fits/"
+    token = "F46fa8e487a"
+    #folder_path=Path("/Users/anell/MuseCannon/LAMOST_spectra/")
+    folder_path=Path(folder_path)
+
+    gz_file = folder_path / f"lamost_spectrum_{obsid}.fits.gz"
+    fits_file = gz_file.with_suffix('')  # Remove the .gz extension
+    
+    # Download only if the file doesn't already exist
+    if not fits_file.exists():
+        url = f"{base_url}{obsid}?token={token}"
+        print(f"Downloading {obsid}...")
+
+        try:
+            response = requests.get(url, stream=True) #stream=True for not loading the entire file into memory
+            response.raise_for_status() #Checks if the request was successful, if not, jump to the except block
+            with open(gz_file, "wb") as f:
+                shutil.copyfileobj(response.raw, f)
+        except requests.RequestException as e:
+            print(f"❌ Error downloading {obsid}: {e}")
+            return  #stop the execution of the function
+        
+        # Extract the file
+        print(f"Unzipping {gz_file}...")
+        try:
+            with gzip.open(gz_file, 'rb') as f_in, open(fits_file, 'wb') as f_out: #for opening and reading the file
+                shutil.copyfileobj(f_in, f_out)  #writes the unzipped file (f_in) into f_out (fit.gz -> fit)
+            gz_file.unlink()  # Delete the .gz file after extraction
+        except Exception as e:
+            print(f"❌ Error unzipping {gz_file}: {e}")
+
+    else:
+        print(f"✅ {fits_file} already exists, skipping.")
+
+
+

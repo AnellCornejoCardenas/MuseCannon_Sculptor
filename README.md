@@ -1,6 +1,6 @@
 # The Cannon for MUSE Sculptor abundances
 
-This repository contains the notebooks and utilities used to train and apply **The Cannon** to low-resolution MUSE spectra in order to estimate stellar labels and chemical abundances for stars in the Sculptor dwarf spheroidal galaxy (Cornejo-Cardenas et al. in prep.).
+This repository contains the notebooks and utilities used to train and apply **The Cannon** to low-resolution MUSE spectra in order to estimate stellar labels and chemical abundances for stars in the Sculptor dwarf spheroidal galaxy (Cornejo-Cardenas et al. 2026).
 
 ## Repository structure
 
@@ -51,7 +51,8 @@ Main dependencies:
 * The Cannon (Version 0.2.93)
 
 ## Paper draft
-This repository includes the current draft of the manuscript associated with this project. The paper is currently under review at MNRAS.
+ACACIAS II (this work) paper: https://ui.adsabs.harvard.edu/abs/2026MNRAS.tmp.1661C/abstract
+ACAIAS I paper: https://ui.adsabs.harvard.edu/abs/2025MNRAS.537.2798N/abstract 
 
 ## Authors
 
